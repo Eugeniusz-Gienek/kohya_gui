@@ -36,7 +36,7 @@ if __name__ == '__main__':
     setup_common.update_submodule()
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--platform-requirements-file', dest='platform_requirements_file', default='requirements_linux.txt', help='Path to the platform-specific requirements file')
+    parser.add_argument('--platform-requirements-file', dest='platform_requirements_file', default='requirements_linux_gentoo.txt', help='Path to the platform-specific requirements file')
     parser.add_argument('--show_stdout', dest='show_stdout', action='store_true', help='Whether to show stdout during installation')
     parser.add_argument('--no_run_accelerate', dest='no_run_accelerate', action='store_true', help='Whether to not run accelerate config')
     args = parser.parse_args()

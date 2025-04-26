@@ -77,7 +77,7 @@ else
         elif [[ "$@" == *"--use-rocm"* ]] || [ -x "$(command -v rocminfo)" ] || [ -f "/opt/rocm/bin/rocminfo" ]; then
             REQUIREMENTS_FILE="$SCRIPT_DIR/requirements_linux_rocm.txt"
         else
-            REQUIREMENTS_FILE="$SCRIPT_DIR/requirements_linux.txt"
+            REQUIREMENTS_FILE="$SCRIPT_DIR/requirements_linux_gentoo.txt"
         fi
     else
         REQUIREMENTS_FILE="$SCRIPT_DIR/requirements_runpod.txt"
