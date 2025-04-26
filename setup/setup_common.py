@@ -52,7 +52,14 @@ def update_submodule(quiet=True):
         subprocess.run(git_command, check=True)
         log.info("Submodule initialized and updated.")
     except subprocess.CalledProcessError as e:
-        log.error(f"Error during Git operation: {e}")
+        log.error(f"Error during Git operation: {e}. Probably we need just to clone the scripts separately.")
+        git_command = ["git", "clone", "https://github.com/Eugeniusz-Gienek/sd-scripts.git", "./sd-scripts"]
+        if quiet:
+            git_command.append("--quiet")
+        try:
+            subprocess.run(git_command, check=True)
+        except subprocess.CalledProcessError as e:
+            log.error(f"Could not also clone the SD scripts repo. Error during Git operation: {e}.")
     except FileNotFoundError as e:
         log.error(e)
 

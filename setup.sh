@@ -215,7 +215,7 @@ install_python_dependencies() {
       elif [ "$USE_ROCM" = true ] || [ -x "$(command -v rocminfo)" ] || [ -f "/opt/rocm/bin/rocminfo" ]; then
         python "$SCRIPT_DIR/setup/setup_linux.py" --platform-requirements-file=requirements_linux_rocm.txt $QUIET
       else
-        python "$SCRIPT_DIR/setup/setup_linux.py" --platform-requirements-file=requirements_linux.txt $QUIET
+        python "$SCRIPT_DIR/setup/setup_linux.py" --platform-requirements-file=requirements_linux_gentoo.txt $QUIET
       fi
       ;;
     "darwin"*)
