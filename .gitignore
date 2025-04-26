@@ -52,6 +52,5 @@ dataset/**
 models
 data
 config.toml
-#sd-scripts
 venv
 venv*
