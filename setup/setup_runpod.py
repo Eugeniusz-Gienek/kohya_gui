@@ -27,10 +27,10 @@ def setup_environment():
     # Get the directory the script is run from
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Install tk and python3.10-venv
-    log.info("Install tk and python3.10-venv...")
+    # Install tk and python3.12-venv
+    log.info("Install tk and python3.12-venv...")
     subprocess.run(['apt', 'update', '-y'])
-    subprocess.run(['apt', 'install', '-y', 'python3-tk', 'python3.10-venv'])
+    subprocess.run(['apt', 'install', '-y', 'python3-tk', 'python3.12-venv'])
 
     # Check if the venv folder doesn't exist
     venv_dir = os.path.join(script_dir, 'venv')

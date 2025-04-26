@@ -192,12 +192,12 @@ install_python_dependencies() {
   # Switch to local virtual env
   echo "Switching to virtual Python environment."
   if ! inDocker; then
-    if command -v python3.10 >/dev/null; then
-      python3.10 -m venv "$DIR/venv"
+    if command -v python3.12 >/dev/null; then
+      python3.12 -m venv "$DIR/venv"
     elif command -v python3 >/dev/null; then
       python3 -m venv "$DIR/venv"
     else
-      echo "Valid python3 or python3.10 binary not found."
+      echo "Valid python3 or python3.12 binary not found."
       echo "Cannot proceed with the python steps."
       return 1
     fi
@@ -533,34 +533,34 @@ if [[ "$OSTYPE" == "lin"* ]]; then
     if inDocker; then
       # We get the site-packages from python itself, then cut the string, so no other code changes required.
       VENV_DIR=$(python -c "import site; print(site.getsitepackages()[0])")
-      VENV_DIR="${VENV_DIR%/lib/python3.10/site-packages}"
+      VENV_DIR="${VENV_DIR%/lib/python3.12/site-packages}"
     fi
 
     # Symlink paths
-    libnvinfer_plugin_symlink="$VENV_DIR/lib/python3.10/site-packages/tensorrt/libnvinfer_plugin.so.7"
-    libnvinfer_symlink="$VENV_DIR/lib/python3.10/site-packages/tensorrt/libnvinfer.so.7"
-    libcudart_symlink="$VENV_DIR/lib/python3.10/site-packages/nvidia/cuda_runtime/lib/libcudart.so.11.0"
+    libnvinfer_plugin_symlink="$VENV_DIR/lib/python3.12/site-packages/tensorrt/libnvinfer_plugin.so.7"
+    libnvinfer_symlink="$VENV_DIR/lib/python3.12/site-packages/tensorrt/libnvinfer.so.7"
+    libcudart_symlink="$VENV_DIR/lib/python3.12/site-packages/nvidia/cuda_runtime/lib/libcudart.so.11.0"
 
     #Target file paths
-    libnvinfer_plugin_target="$VENV_DIR/lib/python3.10/site-packages/tensorrt/libnvinfer_plugin.so.8"
-    libnvinfer_target="$VENV_DIR/lib/python3.10/site-packages/tensorrt/libnvinfer.so.8"
-    libcudart_target="$VENV_DIR/lib/python3.10/site-packages/nvidia/cuda_runtime/lib/libcudart.so.12"
+    libnvinfer_plugin_target="$VENV_DIR/lib/python3.12/site-packages/tensorrt/libnvinfer_plugin.so.8"
+    libnvinfer_target="$VENV_DIR/lib/python3.12/site-packages/tensorrt/libnvinfer.so.8"
+    libcudart_target="$VENV_DIR/lib/python3.12/site-packages/nvidia/cuda_runtime/lib/libcudart.so.12"
 
     # echo "Checking symlinks now."
     # create_symlinks "$libnvinfer_plugin_symlink" "$libnvinfer_plugin_target"
     # create_symlinks "$libnvinfer_symlink" "$libnvinfer_target"
     # create_symlinks "$libcudart_symlink" "$libcudart_target"
 
-    # if [ -d "${VENV_DIR}/lib/python3.10/site-packages/tensorrt/" ]; then
-    #   export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${VENV_DIR}/lib/python3.10/site-packages/tensorrt/"
+    # if [ -d "${VENV_DIR}/lib/python3.12/site-packages/tensorrt/" ]; then
+    #   export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${VENV_DIR}/lib/python3.12/site-packages/tensorrt/"
     # else
-    #   echo "${VENV_DIR}/lib/python3.10/site-packages/tensorrt/ not found; not linking library."
+    #   echo "${VENV_DIR}/lib/python3.12/site-packages/tensorrt/ not found; not linking library."
     # fi
 
-    # if [ -d "${VENV_DIR}/lib/python3.10/site-packages/tensorrt/" ]; then
-    #   export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${VENV_DIR}/lib/python3.10/site-packages/nvidia/cuda_runtime/lib/"
+    # if [ -d "${VENV_DIR}/lib/python3.12/site-packages/tensorrt/" ]; then
+    #   export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${VENV_DIR}/lib/python3.12/site-packages/nvidia/cuda_runtime/lib/"
     # else
-    #   echo "${VENV_DIR}/lib/python3.10/site-packages/nvidia/cuda_runtime/lib/ not found; not linking library."
+    #   echo "${VENV_DIR}/lib/python3.12/site-packages/nvidia/cuda_runtime/lib/ not found; not linking library."
     # fi
 
     configure_accelerate
@@ -605,25 +605,25 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   check_storage_space
 
   # Install base python packages
-  echo "Installing Python 3.10 if not found."
-  if ! brew ls --versions python@3.10 >/dev/null; then
-    echo "Installing Python 3.10."
-    brew install python@3.10 >&3
+  echo "Installing Python 3.12 if not found."
+  if ! brew ls --versions python@3.12 >/dev/null; then
+    echo "Installing Python 3.12."
+    brew install python@3.12 >&3
   else
-    echo "Python 3.10 found!"
+    echo "Python 3.12 found!"
   fi
-  echo "Installing Python-TK 3.10 if not found."
-  if ! brew ls --versions python-tk@3.10 >/dev/null; then
-    echo "Installing Python TK 3.10."
-    brew install python-tk@3.10 >&3
+  echo "Installing Python-TK 3.12 if not found."
+  if ! brew ls --versions python-tk@3.12 >/dev/null; then
+    echo "Installing Python TK 3.12."
+    brew install python-tk@3.12 >&3
   else
-    echo "Python Tkinter 3.10 found!"
+    echo "Python Tkinter 3.12 found!"
   fi
 
   update_kohya_ss
 
   if ! install_python_dependencies; then
-    echo "You may need to install Python. The command for this is brew install python@3.10."
+    echo "You may need to install Python. The command for this is brew install python@3.12."
   fi
 
   configure_accelerate

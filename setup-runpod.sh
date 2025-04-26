@@ -3,9 +3,9 @@
 # This gets the directory the script is run from so pathing can work relative to the script where needed.
 SCRIPT_DIR="$(cd -- "$(dirname -- "$0")" && pwd)"
 
-# Install tk and python3.10-venv
-echo "Installing tk and python3.10-venv..."
-apt update -y && apt install -y python3-tk python3.10-venv
+# Install tk and python3.12-venv
+echo "Installing tk and python3.12-venv..."
+apt update -y && apt install -y python3-tk python3.12-venv
 
 # Install required libcudnn release 8.7.0.84-1
 echo "Installing required libcudnn release 8.7.0.84-1..."

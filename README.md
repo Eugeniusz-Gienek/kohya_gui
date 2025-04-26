@@ -80,7 +80,7 @@ I would like to express my gratitude to camenduru for their valuable contributio
 
 To install the necessary dependencies on a Windows system, follow these steps:
 
-1. Install [Python 3.10.11](https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe).
+1. Install [Python 3.12]
    - During the installation process, ensure that you select the option to add Python to the 'PATH' environment variable.
 
 2. Install [CUDA 12.4 toolkit](https://developer.nvidia.com/cuda-12-4-0-download-archive?target_os=Windows&target_arch=x86_64).
@@ -111,7 +111,7 @@ To set up the project, follow these steps:
 
    Run one of the following setup script by executing the following command:
 
-   For systems with only python 3.10.11 installed:
+   For systems with only python 3.12 installed:
 
    ```shell
    .\setup.bat
@@ -120,7 +120,7 @@ To set up the project, follow these steps:
    For systems with only more than one python release installed:
 
    ```shell
-   .\setup-3.10.bat
+   .\setup-3.12.bat
    ```
 
    During the accelerate config step, use the default values as proposed during the configuration unless you know your hardware demands otherwise. The amount of VRAM on your GPU does not impact the values used.
@@ -140,12 +140,12 @@ To install the necessary dependencies on a Linux system, ensure that you fulfill
 - Ensure that `venv` support is pre-installed. You can install it on Ubuntu 22.04 using the command:
 
   ```shell
-  apt install python3.10-venv
+  apt install python3.12-venv
   ```
 
 - Install the CUDA 12.4 Toolkit by following the instructions provided in [this link](https://developer.nvidia.com/cuda-12-4-0-download-archive?target_os=Linux&target_arch=x86_64).
 
-- Make sure you have Python version 3.10.9 or higher (but lower than 3.11.0) installed on your system.
+- Make sure you have Python version 3.12.0 or higher installed on your system.
 
 #### Setup Linux
 
@@ -487,7 +487,7 @@ If you encounter an X error related to the page file, you may need to increase t
 
 ### No module called tkinter
 
-If you encounter an error indicating that the module `tkinter` is not found, try reinstalling Python 3.10 on your system.
+If you encounter an error indicating that the module `tkinter` is not found, try reinstalling Python 3.12 on your system.
 
 ### LORA Training on TESLA V100 - GPU Utilization Issue
 
